@@ -1,0 +1,44 @@
+{
+    "cards": [
+        {
+            "id": 1,
+            "image": "./src/images/alpine_f1_26.jpg"
+        },
+        {
+            "id": 2,
+            "image": "./src/images/aston_martin_f1_26.webp"
+        },
+        {
+            "id": 3,
+            "image": "./src/images/audi_f1_car_26.webp"
+        },
+        {
+            "id": 4,
+            "image": "./src/images/ferrari_f1_26.jpg"
+        },
+        {
+            "id": 5,
+            "image": "./src/images/haas_f1_26.jpg"
+        },
+        {
+            "id": 6,
+            "image": "./src/images/mclaren_f1_26.jpg"
+        },
+        {
+            "id": 7,
+            "image": "./src/images/mercedes_f1_26.webp"
+        },
+        {
+            "id": 8,
+            "image": "./src/images/red_bull_racing_f1_26.webp"
+        },
+        {
+            "id": 9,
+            "image": "./src/images/williams_car_f1_26.webp"
+        },
+        {
+            "id": 10,
+            "image": "./src/images/racing_bulls_f1_26.webp"
+        }
+    ]
+}
