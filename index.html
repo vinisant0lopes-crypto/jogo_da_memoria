@@ -6,23 +6,36 @@
     <title>Jogo da Memória</title>
 
     <link rel="stylesheet" href="./src/style/style.css">
+    <link rel="stylesheet" href="./src/style/interface.css">
 </head>
 <body>
 
-    <main class="game">
-        <h1>Jogo da Memória</h1>
+    <div class="jogo">
+        
+        
+        <main class="game">
+            <h1>Jogo da Memória</h1>
 
-        <div class="game-info">
-            <span>Jogadas: <strong id="moves">0</strong></span>
-            <span>Pares: <strong id="pairs">0</strong>/6</span>
+            <div class="game-info">
+                <span>Jogadas: <strong id="moves">0</strong></span>
+                <span>Pares: <strong id="pairs">0</strong>/6</span>
+            </div>
+
+            <div id="board" class="board"></div>
+
+            <button id="restart">Novo jogo</button>
+
+            <p id="message" class="message"></p>
+        </main>
+
+        <div class="btn-dificuldade">
+            <button id="botao"><p>dificuldade</p></button>
         </div>
+    </div>
 
-        <div id="board" class="board"></div>
-
-        <button id="restart">Novo jogo</button>
-
-        <p id="message" class="message"></p>
-    </main>
+        <div class="dificuldade">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis modi accusantium dolorem incidunt dignissimos recusandae ducimus optio at, adipisci laborum quasi consectetur tenetur veritatis, unde nemo animi temporibus praesentium tempora!</p>
+        </div>
 
     <script src="./src//scripts/script.js"></script>
 </body>
