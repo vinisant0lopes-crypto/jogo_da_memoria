@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="src/style/style.css">
     <link rel="stylesheet" href="src/style/card_style.css">
+    <link rel="stylesheet" href="src/style/info.css">
     
 </head>
 <body>
@@ -15,8 +16,29 @@
         </div>
     </div>
 
-         <div class="container_info">
-            <button id="resetar-jogo">Resetar Jogo</button>
+        <div class="container_info">
+
+            <button id="resetar_jogo">Resetar Jogo</button>
+
+            <div class="container_expansivel" id="container_expansivel">
+    
+                <button class="btn_toggle" id="btn_toggle">
+                    <span>Selecionar Dificuldade</span>
+                    <span class="seta">▼</span>
+                </button>
+                
+       
+                <div class="opcoes_expansivel">
+                    <button class="btn_dificuldade" data-dificuldade="facil" data-nivel="4">Dificuldade Fácil</button>
+                    <button class="btn_dificuldade" data-dificuldade="medio" data-nivel="6">Dificuldade Médio</button>
+                    <button class="btn_dificuldade" data-dificuldade="dificil" data-nivel="8">Dificuldade Difícil</button>
+                    <button class="btn_dificuldade" data-dificuldade="dificil" data-nivel="10">Dificuldade Muito Difícil</button>
+                </div>
+            
+            </div>
+
+            </div>
+
         </div>
 
     

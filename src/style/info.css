@@ -1,0 +1,84 @@
+.container_info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: black;
+    width: 25vw;
+    height: 12dvh;
+    border-radius: 15px;
+}
+
+
+
+
+.container_expansivel{
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+#resetar_jogo{
+    background-color: #333;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 30%;
+    border-radius: 5px;
+}
+
+.btn_toggle{
+    width: 100%;
+    padding: 10px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.seta{
+    transition: transform 0.3s ease;
+    font-size: 10px;
+}
+
+.opcoes_expansivel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    background-color: #e0e0e0;
+}
+
+.btn_dificuldade {
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.btn_dificuldade:hover {
+    background-color: #ccc;
+}
+
+
+.container_expansivel.active .opcoes_expansivel {
+    max-height: 150px;
+}
+
+.container_expansivel.active .seta {
+    transform: rotate(180deg);
+}

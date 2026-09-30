@@ -1,4 +1,5 @@
-let nivelDificuldade = 4; // 4, 6, 8, 10
+
+
 
 function embaralhar(array) {
     for (let i = 0; i < array.length; i++) {
@@ -10,11 +11,12 @@ function embaralhar(array) {
 
 
 
-async function criar_cartoes(card, container_cards) {
+async function criar_cartoes(card, container_cards, nivelDificuldade) {
     const resposta = await fetch('../../src/data/cards.json');
     const dados = await resposta.json();
 
     const cartasEmbaralhadas = embaralhar([...dados.cards]).slice(0, nivelDificuldade);
+    
     // console.log('Cartas embaralhadas:', cartasEmbaralhadas);
 
     let noveCartas = [...cartasEmbaralhadas, ...cartasEmbaralhadas];
