@@ -1,4 +1,4 @@
-let nivelDificuldade = 3;
+let nivelDificuldade = 4; // 4, 6, 8, 10
 
 function embaralhar(array) {
     for (let i = 0; i < array.length; i++) {
