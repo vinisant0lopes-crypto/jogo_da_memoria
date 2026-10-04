@@ -1,5 +1,6 @@
 
-
+const containerCards = document.querySelector('#container_cards');
+const cardTemplate = document.getElementById('card_exemplo');
 
 function embaralhar(array) {
     for (let i = 0; i < array.length; i++) {
@@ -10,23 +11,34 @@ function embaralhar(array) {
 }
 
 
+function definirNivelDificuldade(nivel) {
+    const niveis = {
+        4: { nome: 'facil', quantidadeCartas: 4, multiplicador: 1 },
+        6: { nome: 'medio', quantidadeCartas: 6, multiplicador: 1.5 },
+        8: { nome: 'dificil', quantidadeCartas: 8, multiplicador: 2 },
+        10: { nome: 'extrema', quantidadeCartas: 10, multiplicador: 3 },
+    };
 
-async function criar_cartoes(card, container_cards, nivelDificuldade) {
+    return niveis[Number(nivel)] || niveis[6];
+}
+
+
+async function criar_cartoes(nivelDificuldade) {
+    const dificuldade = definirNivelDificuldade(nivelDificuldade);
     const resposta = await fetch('../../src/data/cards.json');
     const dados = await resposta.json();
 
-    const cartasEmbaralhadas = embaralhar([...dados.cards]).slice(0, nivelDificuldade);
-    
-    // console.log('Cartas embaralhadas:', cartasEmbaralhadas);
+    const cartasEmbaralhadas = embaralhar([...dados.cards])
+        .slice(0, dificuldade.quantidadeCartas);
 
     let noveCartas = [...cartasEmbaralhadas, ...cartasEmbaralhadas];
     noveCartas = embaralhar(noveCartas);
 
 
-    container_cards.innerHTML = '';
+    containerCards.innerHTML = '';
 
     noveCartas.forEach((item) => {
-        const divDuplicada = card.cloneNode(true);
+        const divDuplicada = cardTemplate.cloneNode(true);
 
         divDuplicada.removeAttribute('id');
         divDuplicada.style.display = 'block';
@@ -39,10 +51,10 @@ async function criar_cartoes(card, container_cards, nivelDificuldade) {
 
         }
 
-        container_cards.appendChild(divDuplicada);
+        containerCards.appendChild(divDuplicada);
     });
 
-
+    return dificuldade;
 };
 
-export { criar_cartoes } 
+export { criar_cartoes, definirNivelDificuldade };

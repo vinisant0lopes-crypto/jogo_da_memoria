@@ -1,9 +1,12 @@
+import { registrarMovimento, registrarParEncontrado } from './barra_lateral.js';
+
 let primeiraCarta = null;
 let segundaCarta = null;
 let bloqTabuleiro = false;
+const containerCards = document.querySelector('#container_cards');
 
-function ativarLogicaDoJogo(container_cards){
-    container_cards.addEventListener('click', (event) =>{
+function ativarLogicaDoJogo() {
+    containerCards.addEventListener('click', (event) => {
 
         const cartaClicada = event.target.closest('.card') || event.target.closest('#card_exemplo');
 
@@ -22,17 +25,6 @@ function ativarLogicaDoJogo(container_cards){
         segundaCarta = cartaClicada;
         verificarPar();
     });
-}
-
-function verificarPar() {
-    const eIgual = primeiraCarta.dataset.id === segundaCarta.dataset.id;
-
-    if (eIgual) {
-        desativarCartas();
-    }else {
-        desvirarCartas();
-    }
-
 }
 
 
@@ -58,5 +50,19 @@ function resetarTabuleiro() {
     [primeiraCarta, segundaCarta] = [null, null];
     bloqTabuleiro = false;
 }
+
+function verificarPar() {
+  registrarMovimento();
+
+  const eIgual = primeiraCarta.dataset.id === segundaCarta.dataset.id;
+
+  if (eIgual) {
+    registrarParEncontrado();
+    desativarCartas();
+  } else {
+    desvirarCartas();
+  }
+}
+
 
 export { ativarLogicaDoJogo }

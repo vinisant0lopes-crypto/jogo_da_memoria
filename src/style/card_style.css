@@ -3,14 +3,16 @@
 }
 
 .card {
+    position: relative;
     height: 100%; 
     aspect-ratio: 4 / 3; 
     
-    background-color: #ffffff;
+    background-color: #e10600;
+    border: 2px solid #e10600;
     color: white;
 
-    border-radius: 8px;
-    padding: 5px;
+    border-radius: 6px;
+    padding: 0;
     
     display: flex;
     justify-content: center;
@@ -19,26 +21,65 @@
     box-sizing: border-box;
 
     cursor: pointer;
-    transition: transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+    user-select: none;         
 }
 
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card .card-image {
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    
+    /* Caminho para o ícone */
+    background-image: url('../images/f1_car.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
 
-    object-fit: contain;
+
+    filter: invert(1);
+    pointer-events: none; 
+}
+
+
+.card.revelada::before {
+    display: none;
+}
+
+
+.card.revelada {
+    background-color: #15151e; 
+    border-color: #ffffff;
 }
 
 .card.revelada .card-image {
     display: block;
 }
 
+
+.card:hover {
+    transform: translateY(-3px) scale(1.03);
+    border-color: #ffffff;
+    box-shadow: 0 6px 15px rgba(225, 6, 0, 0.5);
+}
+
+
+.card .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
 .card.par-encontrado {
-    opacity: 0.6;
+    opacity: 0.75;
+    border-color: #00d2be;
+    box-shadow: 0 0 12px rgba(0, 210, 190, 0.4);
     cursor: default;
     transform: scale(1);
 }

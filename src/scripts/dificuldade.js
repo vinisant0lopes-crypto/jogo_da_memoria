@@ -1,25 +1,19 @@
+const containerExpansivel = document.getElementById('container_expansivel');
+const btnToggle = document.getElementById('btn_toggle');
+const btnsDificuldade = document.querySelectorAll('.btn_dificuldade');
 
+export function expandirBotao(aoSelecionarDificuldade) {
 
-export function expandirBotao(container, toggle, botoes) {
-
-    // console.log("Função expandirBotao inicializada com sucesso!");
-    // console.log("Elemento toggle encontrado:", toggle);
-
-    // if (!toggle || !container) {
-    //     console.error("Erro: btn_toggle ou container_expansivel não foram encontrados no HTML!");
-    //     return;
-    // }
-
-    toggle.addEventListener('click', () => {
-        // console.log("Botão principal clicado!"); 
-        container.classList.toggle('active');
+    btnToggle.addEventListener('click', () => {
+        containerExpansivel.classList.toggle('active');
     });
 
-    botoes.forEach((btn) => {
+    btnsDificuldade.forEach((btn) => {
         btn.addEventListener('click', (event) => {
-            const dificuldade = event.target.dataset.dificuldade;
-            // console.log(`Dificuldade selecionada: ${dificuldade}`);
-            container.classList.remove('active');
+            const nivelDificuldade = Number(event.currentTarget.dataset.nivel);
+
+            containerExpansivel.classList.remove('active');
+            aoSelecionarDificuldade(nivelDificuldade);
         });
     });
 }

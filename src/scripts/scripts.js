@@ -1,45 +1,28 @@
 import { criar_cartoes } from "./criar_cartoes.js";
 import { ativarLogicaDoJogo } from "./esconder_escolher.js";
 import { expandirBotao } from "./dificuldade.js";
+import { iniciarCronometro, resetarEstatisticas } from './barra_lateral.js';
+import { configurarResetarJogo } from './resetar_jogo.js';
+import { definirMultiplicadorDificuldade } from './pontuacao.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    let nivelDificuldade = 4; 
 
-  const card = document.querySelector("#card_exemplo");
-  const container_cards = document.querySelector('#container_cards');
-  const btnReset = document.getElementById('resetar_jogo');
+    async function iniciarJogo() {
+      resetarEstatisticas();
+      iniciarCronometro();
 
-  const btnsDificuldade = document.querySelectorAll('.btn_dificuldade');
+      const dificuldade = await criar_cartoes(nivelDificuldade);
+      definirMultiplicadorDificuldade(dificuldade.multiplicador);
+      ativarLogicaDoJogo();
+    }
 
-
-  let nivelDificuldade = 4;
-
-
-  btnsDificuldade.forEach((btn) => {
-    btn.addEventListener('click', (event) => {
-
-      nivelDificuldade = Number(event.currentTarget.dataset.nivel);
-      
-
+    expandirBotao((novoNivel) => {
+      nivelDificuldade = novoNivel;
       iniciarJogo();
     });
-  });
 
-  const containerExpansivel = document.getElementById('container_expansivel');
-  const btnToggle = document.getElementById('btn_toggle');
+    configurarResetarJogo(iniciarJogo);
 
-  async function iniciarJogo() {
-      await criar_cartoes(card, container_cards, nivelDificuldade);
-      ativarLogicaDoJogo(container_cards);
-  }
-
-  if (btnReset) {
-      btnReset.addEventListener('click', () => {
-          iniciarJogo();
-      });
-  }
-
-
-  expandirBotao(containerExpansivel, btnToggle, btnsDificuldade);
-
-  iniciarJogo();
+    iniciarJogo();
 });
